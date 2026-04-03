@@ -1,0 +1,17 @@
+name: Checking out Git repository
+on: push
+jobs:
+    check-out:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Loading Git repo
+              uses: actions/checkout@6
+            - name: Listing files
+              run: ls
+            - name: Opening index.txt file
+              run: cat index.txt
+    testing:
+        runs-on: ubutnu-latest
+        steps:
+            - name: Testing for files
+              run: ls
