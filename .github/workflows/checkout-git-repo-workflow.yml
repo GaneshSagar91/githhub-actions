@@ -11,7 +11,7 @@ jobs:
             - name: Opening index.txt file
               run: cat index.txt
     testing:
-        runs-on: ubutnu-latest
+        runs-on: ubuntu-latest
         steps:
             - name: Testing for files
               run: ls
