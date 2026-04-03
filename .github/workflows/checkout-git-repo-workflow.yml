@@ -5,7 +5,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Loading Git repo
-              uses: actions/checkout@6
+              uses: actions/checkout@v6
             - name: Listing files
               run: ls
             - name: Opening index.txt file
