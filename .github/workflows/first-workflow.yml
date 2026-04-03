@@ -1,0 +1,20 @@
+name: First Workflow
+on: push
+jobs:
+    first-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Present working directory
+              run: pwd
+            - name: Listing files
+              run: ls
+    second-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Current user
+              run: whoami
+    final-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Wrapping workflow
+              run: echo "Workflow completed."
