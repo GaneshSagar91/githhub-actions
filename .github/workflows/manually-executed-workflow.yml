@@ -4,5 +4,10 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - name: Building the project
-              run: echo "Project built successfully!"
+            - name: Hostname
+              run: 'echo "Hostname: $(hostname)"'
+            - name: Uname
+              run: |
+                echo "Uname: $(uname -a)"
+            - name: Listing all files
+              run: ls -la
