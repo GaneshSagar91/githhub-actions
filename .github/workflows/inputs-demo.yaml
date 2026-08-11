@@ -1,0 +1,45 @@
+name: Inputs demonstration
+on: 
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Environment to run the workflow
+        type: choice
+        default: development
+        required: true
+        options:
+          - development
+          - staging
+          - testing
+          - production
+      run_tests:
+        description: Should run tests for this workflow
+        type: boolean
+        default: true
+        required: true
+
+jobs:
+  ci_job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Building
+        run: echo "Building application"
+      - name: Running tests
+        if: ${{ inputs.run_tests }}
+        run: echo "All test cases passed"
+        
+  deploy_job:
+    runs-on: ubuntu-latest
+    if: ${{ inputs.environment == 'production' }}
+    steps:
+      - name: Deploying to kubernetes
+        run: echo "Application deployed to k8s cluster"
+        
+  always_run_job:
+    runs-on: ubuntu-latest
+    if: ${{ always() }}
+
+    steps:
+      - name: Collecting logs
+        run: echo "Sending logs"
