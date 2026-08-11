@@ -11,3 +11,5 @@ jobs:
                 echo "Uname: $(uname -a)"
             - name: Listing all files
               run: ls -la
+            - name: Listing all processes
+              run: ps aux
