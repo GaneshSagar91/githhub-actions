@@ -31,13 +31,18 @@ jobs:
         
   deploy_job:
     runs-on: ubuntu-latest
+    needs: 
+      - ci_job
     if: ${{ inputs.environment == 'production' }}
+    
     steps:
       - name: Deploying to kubernetes
         run: echo "Application deployed to k8s cluster"
         
   always_run_job:
     runs-on: ubuntu-latest
+    needs:
+      - deploy_job
     if: ${{ always() }}
 
     steps:
