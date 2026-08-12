@@ -1,0 +1,30 @@
+name: Outputs demonstration
+on: workflow_dispatch
+
+jobs:
+  ci-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Building app
+        id: app_version
+        run: |
+          echo "Building..."
+          echo "version=v1.0.0" >> $GITHUB_OUTPUT
+          echo $GITHUB_OUTPUT
+          cat $GITHUB_OUTPUT
+          
+      - name: Testing
+        run: echo "Running tests..."
+
+      - name: Pushing app to artifact repository
+        run: |
+          echo "App version: ${{ steps.app_version.outputs.version }}"
+          echo "Pushing..."
+
+      - name: Workflow configuration
+        run: |
+          echo "Dir: $(pwd)"
+          echo "Steps info: ${{ steps }}"
+          
+      
