@@ -25,6 +25,6 @@ jobs:
       - name: Workflow configuration
         run: |
           echo "Dir: $(pwd)"
-          echo "Steps info: ${{ steps }}"
+          echo "Steps info: ${{ toJson(steps) }}"
           
       
