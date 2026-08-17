@@ -1,0 +1,25 @@
+name: "Artifact demonstration"
+on: workflow_dispatch
+
+jobs:
+  build:
+    name: "Building artifact"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Building
+        run: echo "Building artifact..."
+      - run: echo "Runnig tests..."
+      - name: Generating artifacts
+        run: |
+          echo "Application built and tested successfully" > status.txt
+          echo "<build-reports-here>" > report.txt
+      - name: Uploading artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: build-artifacts
+          path: |
+            status.txt
+            report.txt
+      - run: ls -al
+      
