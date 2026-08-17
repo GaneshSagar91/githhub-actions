@@ -30,7 +30,8 @@ jobs:
 
       - name: Install node modules
         run: |
-          cd node-app && npm ci
+          cd node-app
+          cat package.json && npm ci
 
     outputs:
       cache-dir: ${{ steps.npm-cache-dir.outputs.cache_dir }}
@@ -60,7 +61,9 @@ jobs:
           path: ${{ needs.build.outputs.cache-dir }}
 
       - name: Install node modules
-        run: npm ci
+        run: |
+          cat package.json
+          npm ci
 
       - name: Run node app
         run: nohup npm start &
