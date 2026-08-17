@@ -25,6 +25,8 @@ jobs:
 
   deploy:
     name: "Deploying artifacts"
+    needs: 
+      - build
     runs-on: ububuntu-latest
 
     steps:
