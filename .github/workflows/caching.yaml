@@ -40,6 +40,9 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - build
+    defaults:
+      run:
+        working-directory: ./node-app
 
     steps:
       - name: Checkout repository
@@ -47,7 +50,8 @@ jobs:
 
       - name: npm cache directory
         run: |
-          echo "Dir: ${{ needs.build.outputs.cache-dir }}"
+          echo "Cache dir: ${{ needs.build.outputs.cache-dir }}"
+          echo "PWD: $(pwd)"
       
       - name: Restore cache
         uses: actions/cache@v6
@@ -56,7 +60,7 @@ jobs:
           path: ${{ needs.build.outputs.cache-dir }}
 
       - name: Install node modules
-        run: cd node-app && npm ci
+        run: npm ci
 
       - name: Run node app
         run: nohup npm start &
