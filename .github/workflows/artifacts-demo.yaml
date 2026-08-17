@@ -22,4 +22,15 @@ jobs:
             status.txt
             report.txt
       - run: ls -al
-      
+
+  deploy:
+    name: "Deploying artifacts"
+    runs-on: ububuntu-latest
+
+    steps:
+      - run: ls -al
+      - name: "Downloading artifacts"
+        uses: actions/download-artifact@v8
+        with:
+          name: build-artifacts
+      - run: ls -al
