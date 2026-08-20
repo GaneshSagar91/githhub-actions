@@ -1,0 +1,15 @@
+name: "Matrix startegy demo"
+on: workflow_dispatch
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: "OS details"
+        run: |
+          echo "OS: ${{ runner.os }}"
+          echo "matrix OS: ${{ matrix.os }}"
