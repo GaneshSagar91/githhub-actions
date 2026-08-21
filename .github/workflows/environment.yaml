@@ -40,6 +40,7 @@ jobs:
       - name: Environment variables
         run: |
           echo "vars.NAME: ${{ vars.NAME }}"
+          echo "secrets.SECRETE: ${{ secrets.SECRETE }}"
 
   unkown-job:
     runs-on: ubuntu-latest
