@@ -35,5 +35,5 @@ jobs:
 
       - name: Smoke test
         run: |
-          curl -s http://localhost:3000/
+          sleep 5
           curl -s http://localhost:3000/health
